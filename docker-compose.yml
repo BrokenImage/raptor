@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  server:
+    build: ./server
+    command: python manage.py runserver 0.0.0.0:8000 # change base on api service
+    ports: 
+      - "8001:8001"
+    env_file:
+      - ./server/env
+  web:
+    build: ./web
+    command: python manage.py runserver 0.0.0.0:8000 # change based on hosting service
+    ports: 
+      - "8000:8000"
+    depends_on:
+      - server
+    env_file:
+      - ./web/env
