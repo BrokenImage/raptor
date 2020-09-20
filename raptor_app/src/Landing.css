@@ -1,0 +1,11 @@
+/*  src/Landing.css  */
+.Header {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    margin-bottom: 2em;
+    background-color: rgb(129, 129, 129);
+    color: rgb(255, 255, 255);
+  }

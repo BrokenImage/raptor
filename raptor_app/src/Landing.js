@@ -1,9 +1,12 @@
 import React from 'react'
+import './Landing.css'
 
 function Landing() {
   return (
-    <div>
-      <h1>Anomaly Detection for Solar Panels</h1>
+    <div className="Header">
+      <header>
+        <h1>Anomaly Detection for Solar Panels</h1>
+      </header>
     </div>
   );
 }
