@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+// import 'bootstrap/dist/spacelab/bootstrap.min.css';
 // import logo from './logo.svg';
 import './App.css';
 import Landing from './components/Landing';
 import MultipleImageUploadComponent from './components/multiple-image-upload';
-import { render } from 'react-dom';
+// import { render } from 'react-dom';
 
 
 class App extends Component {

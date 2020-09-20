@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+
+.card {
+  margin: 150px 0 0;
+  /* position: absolute; */
+  left: 50%;
+}
+
+.form-control {
+  padding: .375rem 0;
+  border: none;
+}
+
+.preview img {
+  max-width: 100px;
+}
+
+.multi-preview img {
+  max-width: 100px;
+  padding: 5px;
+}
