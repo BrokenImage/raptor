@@ -1,12 +1,12 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Title from './Title';
+import Landing from './Landing';
 
 function App() {
   return (
     <div className="App">
-      <Title />
+      <Landing />
     </div>
   );
 }
