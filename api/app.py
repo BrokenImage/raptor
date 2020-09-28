@@ -17,6 +17,12 @@ def index():
     return "<h1>Home page</h1>"
 
 
+@app.route("/upload", methods=["POST"])
+def upload_image():
+    # add image to db 
+    return
+
+
 @app.route("/binary", methods=["GET"])
 def binary():
     return "<h1>binary classification model</h1>"

@@ -22,7 +22,7 @@ class ModelRegistry:
         initial_model = self.conn.find(
             {"name": name}).sort({"version": -1}).limit(1)
 
-        # Increment the version my one
+        # Increment the version by one
         version = initial_model.version
         new_version = version + 1
 
