@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-// import 'bootstrap/dist/spacelab/bootstrap.min.css';
 // import logo from './logo.svg';
 import './App.css';
 import Landing from './components/Landing';
 import MultipleImageUploadComponent from './components/multiple-image-upload';
 // import { render } from 'react-dom';
+import Buttons from './components/Buttons'
 
 
 class App extends Component {
@@ -26,7 +26,18 @@ class App extends Component {
             </div>
           </div>
         </div>
-      </div>
+        <div className='container'>
+          <div className='row'>
+              <div className="col-md-6">
+                <div className="card">
+                  <div className="card-header">
+                    <Buttons />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     );
   }
 }
