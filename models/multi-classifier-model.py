@@ -30,7 +30,7 @@ def preprocess_images_labels(images, category):
 def define_model():
     """
     This model is a little less accurate than the best one I found.
-    But it also has onlya quarter the paramenters so its a lot smaller.
+    But it also has only a quarter the paramenters so its a lot smaller.
     """
     model = k.Sequential()
     model.add(k.layers.Conv2D(filters=15, kernel_size=(3,3), strides=(1, 1), padding="valid", input_shape=(40, 24, 1)))
