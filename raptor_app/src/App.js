@@ -4,7 +4,8 @@ import './App.css';
 import Landing from './components/Landing';
 import MultipleImageUploadComponent from './components/multiple-image-upload';
 // import { render } from 'react-dom';
-import Buttons from './components/Buttons'
+import Buttons from './components/Buttons';
+import { Login } from './components/login';
 
 
 class App extends Component {
