@@ -1,0 +1,101 @@
+footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 2.5rem;   
+}
+p {
+    font-size: 25px;
+}
+
+
+.container-1{
+    display: flex; 
+    justify-content: space-evenly
+
+}
+
+.page-container{
+	position: relative;
+	min-height: 30vh;
+
+}
+
+.content-wrap{
+	padding-bottom: 0.1rem;
+}
+
+
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+
+
+
+.socialbtns{
+	font-size: 30px;
+
+}
+a, a:hover {
+	color: #000;
+	text-decoration: none;
+
+}
+
+
+.socialbtnsbtnsbtns li {
+    list-style: none outside none;
+    display: inline-block;
+  
+}
+
+.socialbtns li {
+    list-style: none outside none;
+    display: inline-block;
+}
+
+.socialbtns .fa {
+	color: #FFF;
+	text-shadow: 1px 1px 0px #000,
+			1px -1px 0px #000,
+			-1px 1px 0px #000,
+			-1px -1px 0px #000;
+	-webkit-text-shadow: 1px 1px 0px #000,
+			1px -1px 0px #000,
+			-1px 1px 0px #000,
+			-1px -1px 0px #000;
+	-moz-text-shadow: 1px 1px 0px #000,
+			1px -1px 0px #000,
+			-1px 1px 0px #000,
+			-1px -1px 0px #000;
+	-o-text-shadow: 1px 1px 0px #000,
+			1px -1px 0px #000,
+			-1px 1px 0px #000,
+			-1px -1px 0px #000;
+	transition: all ease-out 0.5s;
+	-moz-transition: all ease-out 0.5s;
+	-webkit-transition: all ease-out 0.5s;
+	-o-transition: all ease-out 0.5s;
+}
+
+.socialbtns .fa:hover {
+	color: #000;
+	text-shadow: 1px 1px 0px #fff,
+			1px -1px 0px #fff,
+			-1px 1px 0px #fff,
+			-1px -1px 0px #fff;
+	-webkit-text-shadow: 1px 1px 0px #fff,
+			1px -1px 0px #fff,
+			-1px 1px 0px #fff,
+			-1px -1px 0px #fff;
+	-moz-text-shadow: 1px 1px 0px #fff,
+			1px -1px 0px #fff,
+			-1px 1px 0px #fff,
+			-1px -1px 0px #fff;
+	-o-text-shadow: 1px 1px 0px #fff,
+			1px -1px 0px #fff,
+			-1px 1px 0px #fff,
+			-1px -1px 0px #fff;
+	transition: all ease 0.5s;
+	-moz-transition: all ease-in 0.5s;
+	-webkit-transition: all ease-in 0.5s;
+	-o-transition: all ease-in 0.5s;
+}

@@ -1,6 +1,7 @@
 import React from "react";
-import "./App.scss";
+import "./Apps.scss";
 import { Login, Register } from "./index";
+import './Apps.css'
 
 class Apps extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class Apps extends React.Component {
     const current = isLogginActive ? "Register" : "Login";
     const currentActive = isLogginActive ? "login" : "register";
     return (
-      <div className="App">
+      <div className="Apps">
         <div className="login">
           <div className="container" ref={ref => (this.container = ref)}>
             {isLogginActive && (
@@ -47,8 +48,7 @@ class Apps extends React.Component {
             current={current}
             currentActive={currentActive}
             containerRef={ref => (this.rightSide = ref)}
-            onClick={this.changeState.bind(this)}
-          />
+            onClick={this.changeState.bind(this)}/>
         </div>
       </div>
     );

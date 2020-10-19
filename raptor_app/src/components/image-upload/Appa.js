@@ -11,7 +11,7 @@ import Buttons from '../Buttons';
 class Appa extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="Appa">
         <div className='container'>
           <div className='row'>
             <div className="col-md-6">
