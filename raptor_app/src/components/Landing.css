@@ -9,3 +9,16 @@
     background-color: rgb(129, 129, 129);
     color: rgb(255, 255, 255);
   }
+
+  .nav-link {
+    display: inline-block;
+    padding: 0.5em 1em;
+    color: rgba(255, 255, 255, 0.835);
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .nav-link-active {
+    color: #fff;
+    border-bottom: 2px solid;
+  }
