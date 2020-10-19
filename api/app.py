@@ -15,7 +15,7 @@ import tensorflow as tf
 from keras.preprocessing.image import img_to_array
 from keras.models import load_model
 from werkzeug.datastructures import FileStorage
-from keras.models import model_from_json
+# from keras.models import model_from_json
 from sklearn.preprocessing import LabelEncoder
 
 from flask import Flask, request, jsonify
@@ -36,6 +36,8 @@ single_parser.add_argument("file", location="files", type=FileStorage, required=
 model = load_model("/Volumes/Tasfia's HD/raptor/models/model.h5") 
 graph = tf.get_default_graph()
 
+label_encoder = LabelEncoder()
+label_encoder.classes_ = np.load("classes.npy")
 
 @app.route("/", methods=["GET"])
 def index():
@@ -58,8 +60,6 @@ def binary():
 class MultiClassification(Resource):
     @api.doc(parser=single_parser, description='Upload an image of a solar panel')
     def post(self):
-        label_encoder = LabelEncoder()
-        label_encoder.classes_ = np.load("classes.npy")
         args = single_parser.parse_args()
         image_file = args.file
         img = Image.open(image_file)
