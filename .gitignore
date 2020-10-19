@@ -2,3 +2,4 @@ env/
 .ipynb_checkpoints
 models/InfraredSolarModules
 api/__pycache__
+web-dummy/

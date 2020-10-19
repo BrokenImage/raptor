@@ -24,7 +24,7 @@ from flask_restplus import Api, Resource, fields
 app = Flask(__name__)
 
 api = Api(app, version="1.0", title="Anomaly Detection", description="")
-ns = api.namespace('index')
+ns = api.namespace('api')
 
 single_parser = api.parser()
 single_parser.add_argument("file", location="files", type=FileStorage, required=True)
@@ -33,7 +33,7 @@ single_parser.add_argument("file", location="files", type=FileStorage, required=
 # model will be loaded every time a request comes in
 # TODO: REPLACE THIS WITH GOOGLE DRIVE LINK
 # https://drive.google.com/file/d/1nBnJVWhAF7UDfKQAkDvUmF-NKpyXHShP/view?usp=sharing
-model = load_model("/Volumes/Tasfia's HD/raptor/models/model.h5") 
+model = load_model("model.h5") 
 graph = tf.get_default_graph()
 
 label_encoder = LabelEncoder()
