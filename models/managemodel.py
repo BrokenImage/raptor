@@ -54,7 +54,7 @@ def create_dataset(file_name, input_type, size, classes, test_size, add_to):
 @click.argument('model_path', type=click.Path(exists=True))
 @click.argument('classes_path', type=click.Path(exists=True))
 @click.argument('name', type=str)
-@click.argument('metrics', type=dict)
+@click.argument('metrics', type=str)
 @click.option('--increment-version', is_flag=True, 
     help='if set, will increment version from an already existing model in the registry with the same name')
 def upload_model(model_path, classes_path, name, metrics, increment_version):
@@ -70,9 +70,29 @@ def upload_model(model_path, classes_path, name, metrics, increment_version):
     )
 
     if increment_version:
-        registry.increment_version(model_path, name, metrics)
+        registry.increment_version(model_path, classes_path, name, metrics)
     else:
         registry.publish_model(model_path, classes_path, name, metrics)
+
+
+@cli.command()
+@click.argument('model_name', type=str)
+@click.argument('model_version', type=int)
+@click.option('--stage', type=click.Choice(['DEVELOPMENT', 'PRODUCTION'], case_sensitive=True), 
+        help='the stage of the model, DEVELOPMENT or PRODUCTION', default='PRODUCTION')
+def update_stage(model_name, model_version, stage):
+    """Updates the stage of the model with the given name and version"""
+    session = boto3.Session(
+        aws_access_key_id=os.environ['AWS_ACCESS_KEY_ID'], 
+        aws_secret_access_key=os.environ['AWS_SECRET_KEY']
+    )
+    registry = ModelRegistry(
+        MongoClient(os.environ['MONGO_CLIENT_URL']).registry, 
+        session.resource('s3'), 
+        bucket_name=os.environ['AWS_BUCKET_NAME']
+    )
+    registry.update_stage(model_name, model_version, stage)
+
 
 
 if __name__ == '__main__':

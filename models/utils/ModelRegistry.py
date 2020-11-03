@@ -25,14 +25,14 @@ class ModelRegistry:
         # Save model file to AWS S3 bucket 
         version = 1
         self.s3_bucket.upload_file(Filename=model_path, Key=f'{name}-v{version}.h5')
-        self.s3_bucket.upload_file(Filename=model_path, Key=f'{name}-v{version}.npy')
+        self.s3_bucket.upload_file(Filename=classes_path, Key=f'{name}-v{version}.npy')
 
         # Create and save a new model doc with related information
         self._insert(name, version, metrics, 'name-v0.h5', self.stages.development.value)
 
-    def increment_version(self, model_path, name, metrics):
+    def increment_version(self, model_path, classes_path, name, metrics):
         # Get the most recent model version doc in the collection
-        initial_model = self.conn.find({"name": name}).sort({"version": -1}).limit(1)
+        initial_model = list(self.conn.find({"name": name}).sort([("version", -1)]).limit(1))[0]
 
         # Increment the version by one
         version = initial_model['version']
@@ -40,11 +40,10 @@ class ModelRegistry:
 
         # Upload the model to aws s3
         self.s3_bucket.upload_file(Filename=model_path, Key=f'{name}-v{new_version}.h5')
-        self.s3_bucket.upload_file(Filename=model_path, Key=f'{name}-v{version}.npy')
-        assert remote_path, 'Something went wrong when getting the model\'s remote path from AWS'
+        self.s3_bucket.upload_file(Filename=classes_path, Key=f'{name}-v{new_version}.npy')
 
         # Upload model doc to database
-        self.conn.insert_one(name, version, metrics, 'name-v0.h5', self.stages.development.value)
+        self._insert(name, new_version, metrics, 'name-v0.h5', self.stages.development.value)
 
     def update_stage(self, name, version, stage):
         query = {"name": name, "version": version}
