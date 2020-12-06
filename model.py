@@ -25,6 +25,7 @@ def preprocess_images_labels(images, category):
     y_test = labelencoder.transform(y_test)
     y_train = k.utils.to_categorical(y_train) # encode nubers to catagorical labels
     y_test = k.utils.to_categorical(y_test)
+    np.save('classes.npy', labelencoder.classes_)
     return X_train, X_test, y_train, y_test
 
 def define_model():
