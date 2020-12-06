@@ -5,3 +5,4 @@ models/InfraredSolarModules
 api/__pycache__
 web-dummy/
 InfraredSolarModules/
+model.h5
