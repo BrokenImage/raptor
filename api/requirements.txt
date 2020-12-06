@@ -1,0 +1,9 @@
+Flask==1.0.2
+flask_restplus==0.12.1
+keras==2.2.4
+tensorflow==1.14.0
+werkzeug==0.16.0
+numpy==1.17.2
+scipy==1.5.2
+scikit-learn==0.23.2
+Pillow
