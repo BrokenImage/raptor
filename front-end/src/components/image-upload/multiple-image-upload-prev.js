@@ -46,9 +46,9 @@ export default class MultipleImageUploadComponent extends Component {
         // const myHeaders = new Headers({
         //   "Content-Type": "multipart/form-data",
         // });
-        const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        //const proxyurl = "https://cors-anywhere.herokuapp.com/";
         // fetch("https://prediction.dev.raptorapps.com/api/multi", {
-        fetch(`${proxyurl + process.env.REACT_APP_API_URL}/api/classify`, {
+        fetch(`${process.env.REACT_APP_API_URL}api/classify`, {
             method: "POST",
             body: data,
             // mode: "cors",
