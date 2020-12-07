@@ -15,10 +15,10 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <h3 align="center">Sonomaly Backend</h3>
+  <h3 align="center">Sonomaly Prediction API</h3>
 
   <p align="center">
-    The backend for the Sonomaly application splits into the prediction API, model-training, and online model training.
+    The API backend for the Sonomaly frontend website
     <br />
     <a href="https://github.com/BrokenImage/raptor-api"><strong>Explore the docs »</strong></a>
     <br />
@@ -41,6 +41,7 @@
 * [Getting Started](#getting-started)
   * [Installation](#installation)
 * [Usage](#usage)
+* [Deployment](#deployment)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -65,7 +66,7 @@ This is only one part of this project and you should look at the other parts on 
 * [Flask RestPlus](https://flask-restplus.readthedocs.io/en/stable/)
 * [Caprover](https://caprover.com/)
 * [AWS](https://aws.amazon.com/ec2/)
-* [MongoDB](https://www.mongodb.com/)
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -74,13 +75,48 @@ Lets get into setting this up for yourself.
 
 ### Installation
 
-Each folder in this repo has their own README.cd files that explain how they are installed and deployed. Other features, like the mongodb database and AWS S3 bucket should be setup using the usual setup instructutions given by MongoDB Client and AWS Bucker creation page.
+1. Install Docker following the instructions [here](https://docs.docker.com/get-docker/)
+2. Clone the repo
+```sh
+git clone https://github.com/BrokenImage/raptor-api.git
+```
+3. Build the Docker image (make sure Docker is running)
+```sh
+docker build -t sonomaly-api .
+```
+4. Start a Docker container
+```sh
+docker run -p 8000:8000 --rm --name sonomaly-api-container sonomaly-api
+```
+
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-* The API can be called from Postman, using curl, or you can use the swagger UI by going to port 8000
-* The model registry is hosted using the MongoDB console site
+The API can be called from Postman, using curl, or can be called by the like in the sonomoly frontend repo
+
+<!-- Deployment -->
+## Deployment
+
+1. Follow the [Installation](#installation) guide above.
+4. Generally, follow [this](https://medium.com/swlh/caprover-the-definitive-guide-90076405aae4) guide to setup caprover on an Ubuntu 18 server hosted by the cloud service of your choice. (we used AWS EC2 free tier)
+5. Create a new app on your caprover server with the name of your choice.
+6. Add enviroment variables needed for the API to run, creating the realted resouces following standard guidelines
+```sh
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_KEY=
+AWS_BUCKET_NAME=
+MONGO_CLIENT_URL=
+```
+6. Compact the prediction API into a .tar file (mac os command)
+```sh
+tar -czf prediction-api.tar prediction-api/
+```
+7. Upload the file to the caprover app you created earlier.
+8. Make sure the build is successful on the caprover deployment logs
+9. Go to the url you setup during the caprover setup and you should see the swagger ui for the api
+
+ps. Due to issues with swagger ui not handling multiple file upload properly, you will not be able to test it there but the api will work when properly sent request.
 
 
 <!-- ROADMAP -->

@@ -34,8 +34,8 @@ export default class MultipleImageUploadComponent extends Component {
       data.append("files", imageFile);
     });
 
-    const proxyurl = "https://cors-anywhere.herokuapp.com/";
-    fetch(`${proxyurl + process.env.REACT_APP_API_URL}/api/classify`, {
+    // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    fetch(`${process.env.REACT_APP_API_URL}api/classify`, {
       method: "POST",
       body: data,
     })
