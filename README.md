@@ -1,19 +1,22 @@
+# Live
+Visit this link http://raptor-app.raptorapps.com/
+
 # To run on machine locally
 ## Set up Flask server 
 Must have `virtualenv` python package installed. From root directory, type
 ```
-cd api
+cd back-end
 virtualenv env 
 source env/bin/activate
 pip install -r requirements.txt
 python app.py
 ```
-Go to http://localhost:5000 to try out the API. Use images from the test-images folder.
+Go to http://localhost:5000 to try out the API.
 
 ## Set up React 
 Must have `Node.js` installed. From root directory, type
 ```
-cd web
+cd front-end
 npm install 
 npm start
 ```
@@ -22,4 +25,8 @@ Go to http://localhost:3000 to view frontend. Currently, requests can not be mad
 <br>
 
 # To run on Docker 
-Instructions will be available soon
+```
+cd back-end
+docker-compose up
+```
+Go to http://localhost:8000 to try out the API.
