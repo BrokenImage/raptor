@@ -1,6 +1,7 @@
 import os
 import boto3
 import numpy as np
+from PIL import Image
 import tensorflow as tf
 from flask import Flask, send_from_directory, render_template
 from dotenv import load_dotenv
@@ -32,6 +33,13 @@ app = Flask(__name__, static_folder="static/static", template_folder="static")
 def hello():
     return render_template('index.html')
 
+@app.route("/submitted-imgs")
+def return_submitted_imgs():
+    ls = []
+    for filename in os.listdir("../imgs/submitted"):
+        for anotherfile in os.listdir(os.path.join("../imgs/submitted", filename)):
+            ls.append(os.path.join(f"../imgs/submitted/{filename}", anotherfile))
+    return str(ls)
 
 api = Api(app, doc=False, version="1.0", title="Anomaly Detection", description="")
 ns = api.namespace('api')
@@ -44,11 +52,6 @@ backup_label_encoder = LabelEncoder()
 backup_label_encoder.classes_ = np.load("./models/backup/classes.npy")
 
 
-@api.route('/')
-class HelloWorld(Resource):
-    def get(self):
-        return {'hello': 'world'}
-
 @ns.route("/classify")
 class MultiClassification(Resource):
     @api.doc(parser=single_parser, description='Upload an image of a solar panel')
@@ -59,11 +62,21 @@ class MultiClassification(Resource):
         
         args = single_parser.parse_args()
         image_files = args.files
-
         preds = []
         for image in image_files:
             image_array = model.preprocess(image)
-            preds.append(model.predict(image_array)[0])
+            pred = model.predict(image_array)[0]
+            img1 = Image.open(image)
+            nonce = 0
+            if os.path.exists(f"../imgs/submitted/{pred}") == False:
+                os.mkdir(f"../imgs/submitted/{pred}") 
+                nonce = 0
+            else:
+                filename = max(os.listdir(f"../imgs/submitted/{pred}"))
+                nonce = int(filename[0:len(filename)-4])
+                nonce += 1
+            img1.save(f"../imgs/submitted/{pred}/{nonce}.jpg")
+            preds.append(pred)
 
         return {'prediction': str(preds)}
 
