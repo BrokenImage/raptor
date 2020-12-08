@@ -1,4 +1,5 @@
 import os
+import subprocess
 import boto3
 import numpy as np
 from PIL import Image
@@ -51,7 +52,6 @@ backup_model = load_model("./models/backup/model.h5")
 backup_label_encoder = LabelEncoder()
 backup_label_encoder.classes_ = np.load("./models/backup/classes.npy")
 
-
 @ns.route("/classify")
 class MultiClassification(Resource):
     @api.doc(parser=single_parser, description='Upload an image of a solar panel')
@@ -77,6 +77,10 @@ class MultiClassification(Resource):
                 nonce += 1
             img1.save(f"../imgs/submitted/{pred}/{nonce}.jpg")
             preds.append(pred)
+        
+        # Gets the pred accuacy for the model or use other monitoring 
+        # methods to activate the training of a new model using the confirmed data  
+        # subprocess.Popen(['python', './utils/trainModel.py'])
 
         return {'prediction': str(preds)}
 

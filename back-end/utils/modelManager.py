@@ -68,3 +68,30 @@ class ModelManager():
         os.environ['MODEL_NAME'] = latest_model['name']
         os.environ['MODEL_VERSION'] = str(latest_model['version'])
 
+    def get_latest_online_model_version(self):
+        initial_model = list(self.conn.find({"name": 'online-model'}).sort([("version", -1)]).limit(1))[0]
+        return initial_model.version if initial_model else 0
+
+    def _insert(self, name, version, metrics_str, naming_format, stage):
+        model_doc = {
+            "name": name, 
+            "version": version, 
+            "naming_format": naming_format,
+            "metrics": metrics_str, 
+            "stage": stage
+        }
+        self.conn.insert_one(model_doc)
+
+    def publish_model(self, model_path, classes_path, name, metrics):
+        latest_model = list(self.conn.find({'stage': 'PRODUCTION', 'name': name}).sort([("version", -1)]).limit(1))
+        # Save model file to AWS S3 bucket 
+        version = 1
+        if len(latest_model) > 0:
+            version = latest_model[0].version + 1
+
+        self.s3_bucket.upload_file(Filename=model_path, Key=f'{name}-v{version}.h5')
+        self.s3_bucket.upload_file(Filename=classes_path, Key=f'{name}-v{version}.npy')
+
+        # Create and save a new model doc with related information
+        self._insert(name, version, metrics, 'name-v0.h5', 'PRODUCTION')
+
