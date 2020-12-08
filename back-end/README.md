@@ -88,7 +88,7 @@ npm run build
 ```
 4. Start and build the Docker container
 ```sh
-docker-compose up [--build if your activly making changes]
+docker-compose up [--build if you're activly making changes]
 ```
 
 
