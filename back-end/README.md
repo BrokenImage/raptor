@@ -101,7 +101,7 @@ The API can be called from Postman, using curl, or can be called by the like in 
 ## Deployment
 
 1. Follow the [Installation](#installation) guide above.
-4. Generally, follow [this](https://medium.com/swlh/caprover-the-definitive-guide-90076405aae4) guide to setup caprover on an Ubuntu 18 server hosted by the cloud service of your choice. (we used AWS EC2 free tier)
+4. Generally, follow [this](https://medium.com/swlh/caprover-the-definitive-guide-90076405aae4) guide to setup caprover on an Ubuntu 18 server hosted by the cloud service of your choice. (we used [DigitalOcean](https://www.digitalocean.com/))
 5. Create a new app on your caprover server with the name of your choice.
 6. Add enviroment variables needed for the API to run, creating the realted resouces following standard guidelines
 ```sh
