@@ -80,13 +80,15 @@ Lets get into setting this up for yourself.
 ```sh
 git clone https://github.com/BrokenImage/raptor-api.git
 ```
-3. Build the Docker image (make sure Docker is running)
+3. Create a production build of the frontend (this will build the frontend into the backend static folder)
 ```sh
-docker build -t sonomaly-api .
+cd front-end
+npm install
+npm run build
 ```
-4. Start a Docker container
+4. Start and build the Docker container
 ```sh
-docker run -p 8000:8000 --rm --name sonomaly-api-container sonomaly-api
+docker-compose up [--build if your activly making changes]
 ```
 
 
@@ -108,16 +110,13 @@ AWS_SECRET_KEY=
 AWS_BUCKET_NAME=
 MONGO_CLIENT_URL=
 ```
-6. Compact the prediction API into a .tar file (mac os command)
+6. Compress the backend into a .tar file (mac os command)
 ```sh
-tar -czf prediction-api.tar prediction-api/
+tar -czf back-end.tar back-end/
 ```
 7. Upload the file to the caprover app you created earlier.
 8. Make sure the build is successful on the caprover deployment logs
-9. Go to the url you setup during the caprover setup and you should see the swagger ui for the api
-
-ps. Due to issues with swagger ui not handling multiple file upload properly, you will not be able to test it there but the api will work when properly sent request.
-
+9. Go to the url you deployed during caprover's setup, you should see the react front-end for the application
 
 <!-- ROADMAP -->
 ## Roadmap
