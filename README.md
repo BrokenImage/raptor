@@ -137,7 +137,7 @@ tar -czf back-end.tar back-end/
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/BrokenImage/raptor-api/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/BrokenImage/raptor/issues) for a list of proposed features (and known issues).
 
 
 <!-- CONTRIBUTING -->
