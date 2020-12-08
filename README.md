@@ -41,7 +41,6 @@ Visit this link http://raptor-app.raptorapps.com/
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Installation](#installation)
-* [Usage](#usage)
 * [Deployment](#deployment)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
@@ -113,12 +112,6 @@ npm run build
 ```sh
 docker-compose up [--build if you're activly making changes]
 ```
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-The API can be called from Postman, using curl, or can be called by the like in the sonomoly frontend repo
 
 <!-- Deployment -->
 ## Deployment
