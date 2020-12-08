@@ -5,3 +5,5 @@ models/InfraredSolarModules
 api/__pycache__
 web-dummy/
 InfraredSolarModules/
+*.tar
+.DS_Store
